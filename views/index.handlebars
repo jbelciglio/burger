@@ -1,0 +1,33 @@
+<img id="logo"></img>
+<h1 id="title">Burgers!</h1>
+<h2 id="subtitle">Just type in a burger, and it'll be made ready immediately!!</h2>
+
+<h2>burgers ready to go!</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#unless devoured}}
+      {{> burgers/burger-block devoured=true}}
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Burgers eaten already!</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#if devoured}}
+      {{> burgers/burger-block devoured=false}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Add a Burger</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ca">Bruger Name:</label>
+    <input type="text" id="ca" name="name">
+  </div>
+   <button type="submit">Add Burger</button>
+</form>
