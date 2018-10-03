@@ -3,7 +3,7 @@ var router = express.Router();
 
 var burger = require("../models/burger.js");
 
-router.get("/", function(req, res) {
+  router.get("/", function(req, res) {
     burger.selectAll(function(data) {
       var hbsObject = {
         burgers: data
@@ -12,11 +12,12 @@ router.get("/", function(req, res) {
       res.render("index", hbsObject);
     });
   });
+
   router.post("/api/burgers", function(req, res) {
-    burger.create([
+    burger.insertOne([
       "burger_name", "devoured"
     ], [
-      req.body.name, req.body.devoured
+      req.body.burger_name, req.body.devoured
     ], function(result) {
       // Send back the ID of the new quote
       res.json({ id: result.insertId });
@@ -39,5 +40,4 @@ router.get("/", function(req, res) {
       }
     });
   });
-
 module.exports = router;
